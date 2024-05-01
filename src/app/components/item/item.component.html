@@ -1,6 +1,8 @@
-<mat-list-item
-  [ngClass]="{ bought: item.isBought }"
-  (click)="toggleBought(item)"
->
-  <p>{{ item.name }}</p>
-</mat-list-item>
+<div class="grocery-line-item" (click)="toggleBought(item)">
+  <span [ngClass]="{ bought: item.isBought }">
+    {{ item.name }}
+  </span>
+  <div (click)="$event.stopPropagation(); removeItem(item)">
+    <mat-icon color="warn">clear</mat-icon>
+  </div>
+</div>

@@ -1,7 +1,5 @@
-<mat-list>
-  <ng-container *ngFor="let item of groceryList">
-    <ng-container *ngIf="!item.isBought || showBoughtItems">
-      <app-item [item]="item"></app-item>
-    </ng-container>
+<ng-container *ngFor="let item of groceryList">
+  <ng-container *ngIf="!item.isBought || showBoughtItems">
+    <app-item [item]="item"></app-item>
   </ng-container>
-</mat-list>
+</ng-container>
