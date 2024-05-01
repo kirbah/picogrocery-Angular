@@ -1,0 +1,6 @@
+<mat-list-item
+  [ngClass]="{ bought: item.isBought }"
+  (click)="toggleBought(item)"
+>
+  <p>{{ item.name }}</p>
+</mat-list-item>

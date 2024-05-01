@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'picogrocery' title`, () => {
+  it(`should have the showBoughtItems set to true`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('picogrocery');
+    expect(app.showBoughtItems).toEqual(true);
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, picogrocery');
+    expect(compiled.querySelector('h1')?.textContent).toContain('picoGrocery');
   });
 });
