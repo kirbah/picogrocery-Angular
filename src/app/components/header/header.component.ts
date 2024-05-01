@@ -1,12 +1,11 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatButtonModule } from '@angular/material/button';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatIconModule, MatButtonToggleModule, MatButtonModule],
+  imports: [FontAwesomeModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
@@ -14,6 +13,8 @@ export class HeaderComponent {
   @Output() addItemClick = new EventEmitter();
   @Output() toggleShopping = new EventEmitter();
 
+  faPlus = faPlus;
+  faShoppingCart = faShoppingCart;
   title: string = 'picoGrocery';
 
   toggleShoppingMode() {

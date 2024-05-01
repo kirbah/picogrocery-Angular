@@ -1,9 +1,9 @@
 <header>
-  <mat-button-toggle mat-icon-button (click)="toggleShoppingMode()">
-    <mat-icon>shopping_cart</mat-icon>
-  </mat-button-toggle>
+  <span (click)="toggleShoppingMode()">
+    <fa-icon [icon]="faShoppingCart" size="lg" />
+  </span>
   <h1>{{ title }}</h1>
-  <button mat-icon-button (click)="addNewItem()">
-    <mat-icon>add_circle</mat-icon>
-  </button>
+  <span (click)="addNewItem()">
+    <fa-icon [icon]="faPlus" size="lg" />
+  </span>
 </header>
