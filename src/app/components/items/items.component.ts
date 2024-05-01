@@ -16,4 +16,11 @@ export class ItemsComponent {
   @Input() showBoughtItems = true;
 
   groceryList: GroceryItem[] = groceryList;
+
+  removeItem(item: GroceryItem): void {
+    const index = this.groceryList.indexOf(item);
+    if (index !== -1) {
+      this.groceryList.splice(index, 1); // Remove the item from the array
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,6 +14,7 @@ import { GroceryItem } from '../../data/grocery.types';
 })
 export class ItemComponent {
   @Input() item!: GroceryItem;
+  @Output() remove: EventEmitter<GroceryItem> = new EventEmitter<GroceryItem>();
 
   toggleBought(item: GroceryItem) {
     item.isBought = !item.isBought;
@@ -22,10 +23,9 @@ export class ItemComponent {
     } else {
       item.boughtTime = null;
     }
-    console.log(item);
   }
 
   removeItem(item: GroceryItem): void {
-    console.log(item);
+    this.remove.emit(item);
   }
 }
