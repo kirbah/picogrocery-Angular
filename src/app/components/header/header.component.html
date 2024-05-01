@@ -1,6 +1,9 @@
 <header>
   <span (click)="toggleShoppingMode()">
-    <fa-icon [icon]="faShoppingCart" size="lg" />
+    <fa-icon
+      [icon]="showBoughtItems ? faShoppingCart : faCartArrowDown"
+      size="lg"
+    />
   </span>
   <h1>{{ title }}</h1>
   <span (click)="addNewItem()">
