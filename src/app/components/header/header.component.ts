@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faPlus,
   faShoppingCart,
   faCartArrowDown,
 } from '@fortawesome/free-solid-svg-icons';
+import { UiService } from '../../services/ui.service';
 
 @Component({
   selector: 'app-header',
@@ -14,9 +15,7 @@ import {
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  @Input() showBoughtItems = true;
-  @Output() addItemClick = new EventEmitter();
-  @Output() toggleShopping = new EventEmitter();
+  showBoughtItems: boolean = true;
 
   faPlus = faPlus;
   faShoppingCart = faShoppingCart;
@@ -24,11 +23,14 @@ export class HeaderComponent {
 
   title: string = 'picoGrocery';
 
+  constructor(private uiService: UiService) {}
+
   toggleShoppingMode() {
-    this.toggleShopping.emit();
+    this.showBoughtItems = !this.showBoughtItems;
+    this.uiService.toggleShopping();
   }
 
   addNewItem() {
-    this.addItemClick.emit();
+    this.uiService.toggleAddItem();
   }
 }

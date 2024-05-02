@@ -1,0 +1,17 @@
+.form-control input {
+  width: 50%;
+  margin: 5px;
+  padding: 30px 70px;
+  font-size: 17px;
+}
+
+.submit-button {
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.green-icon {
+  color: green;
+}

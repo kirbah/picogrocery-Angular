@@ -3,6 +3,6 @@
     {{ item.name }}
   </span>
   <div (click)="$event.stopPropagation(); removeItem(item)">
-    <fa-icon [ngStyle]="{ color: 'red' }" [icon]="faTimes" />
+    <fa-icon class="red-icon" [icon]="faTimes" />
   </div>
 </div>

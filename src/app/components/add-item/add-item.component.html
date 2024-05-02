@@ -1,0 +1,16 @@
+<form *ngIf="showAddItem" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="text"> New </label>
+    <input
+      class="form-control"
+      type="text"
+      name="text"
+      [(ngModel)]="text"
+      id="text"
+      placeholder="Add grocery"
+    />
+    <button type="submit" class="submit-button">
+      <fa-icon class="green-icon" [icon]="faCheck" />
+    </button>
+  </div>
+</form>

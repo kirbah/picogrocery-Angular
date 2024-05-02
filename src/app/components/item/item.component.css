@@ -11,3 +11,7 @@
 .bought {
   text-decoration: line-through;
 }
+
+.red-icon {
+  color: red;
+}

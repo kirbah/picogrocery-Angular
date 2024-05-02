@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ItemComponent } from '../item/item.component';
 import { GroceryItem } from '../../data/grocery.types';
 import { groceryList } from '../../data/grocery.data';
+import { UiService } from '../../services/ui.service';
 
 @Component({
   selector: 'app-items',
@@ -12,10 +13,20 @@ import { groceryList } from '../../data/grocery.data';
   templateUrl: './items.component.html',
   styleUrl: './items.component.css',
 })
-export class ItemsComponent {
-  @Input() showBoughtItems = true;
+export class ItemsComponent implements OnInit {
+  showBoughtItems: boolean = true;
 
   groceryList: GroceryItem[] = groceryList;
+
+  constructor(private uiService: UiService) {}
+
+  ngOnInit() {
+    this.uiService.onToggle().subscribe((data) => {
+      if (data.toggleShoppingMode !== undefined) {
+        this.showBoughtItems = data.toggleShoppingMode;
+      }
+    });
+  }
 
   removeItem(item: GroceryItem): void {
     const index = this.groceryList.indexOf(item);

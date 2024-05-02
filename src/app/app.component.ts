@@ -2,23 +2,14 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { HeaderComponent } from './components/header/header.component';
+import { AddItemComponent } from './components/add-item/add-item.component';
 import { ItemsComponent } from './components/items/items.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, ItemsComponent],
+  imports: [RouterOutlet, HeaderComponent, ItemsComponent, AddItemComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  showBoughtItems = true;
-
-  toggleShoppingMode() {
-    this.showBoughtItems = !this.showBoughtItems;
-  }
-
-  addItem() {
-    console.log('TODO: add');
-  }
-}
+export class AppComponent {}
