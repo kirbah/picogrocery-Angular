@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GroceryItem } from '../../data/grocery.types';
 import { UiService } from '../../services/ui.service';
+import { DataService } from '../../services/data.service';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -17,7 +18,8 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 })
 export class AddItemComponent implements OnInit {
   private uiService = inject(UiService);
-  text: string = '';
+  private dataService = inject(DataService);
+  itemName: string = '';
   showAddItem: boolean = false;
 
   faCheck = faCheck;
@@ -32,13 +34,13 @@ export class AddItemComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.text);
     const item: GroceryItem = {
-      name: this.text,
+      name: this.itemName,
       isBought: false,
     };
+    this.dataService.addItem(item);
 
-    this.text = '';
+    this.itemName = '';
     this.uiService.toggleAddItem();
   }
 

@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ItemComponent } from '../item/item.component';
 import { GroceryItem } from '../../data/grocery.types';
-import { groceryList } from '../../data/grocery.data';
 import { UiService } from '../../services/ui.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-items',
@@ -15,11 +15,13 @@ import { UiService } from '../../services/ui.service';
 })
 export class ItemsComponent implements OnInit {
   private uiService = inject(UiService);
+  private dataService = inject(DataService);
   showBoughtItems: boolean = true;
 
-  groceryList: GroceryItem[] = groceryList;
+  groceryList?: GroceryItem[];
 
   ngOnInit() {
+    this.groceryList = this.dataService.getAllGroceryList();
     this.uiService.onToggle().subscribe((data) => {
       if (data.toggleShoppingMode !== undefined) {
         this.showBoughtItems = data.toggleShoppingMode;
@@ -28,9 +30,6 @@ export class ItemsComponent implements OnInit {
   }
 
   removeItem(item: GroceryItem): void {
-    const index = this.groceryList.indexOf(item);
-    if (index !== -1) {
-      this.groceryList.splice(index, 1); // Remove the item from the array
-    }
+    this.dataService.removeItem(item);
   }
 }
