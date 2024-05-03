@@ -1,6 +1,7 @@
 name: Deploy to GitHub Pages via angular-cli-ghpages
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
@@ -19,9 +20,13 @@ jobs:
           node-version: 20.x
           cache: "npm"
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: ng test --no-watch --no-progress --browsers=ChromeHeadless
+
       - name: Prepare and deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          npm install
-          npm run ng -- deploy --base-href=/picogrocery-Angular/ --name="picogrocery" --email="kirbah@gmail.com"
+        run: npm run ng -- deploy --base-href=/picogrocery-Angular/ --name="picogrocery" --email="kirbah@gmail.com"
