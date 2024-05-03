@@ -1,16 +1,21 @@
-<form *ngIf="showAddItem" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="text"> New </label>
-    <input
-      class="form-control"
-      type="text"
-      name="text"
-      [(ngModel)]="text"
-      id="text"
-      placeholder="Add grocery"
-    />
-    <button type="submit" class="submit-button">
-      <fa-icon class="green-icon" [icon]="faCheck" />
-    </button>
+<div class="grocery-line-item" *ngIf="showAddItem">
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <input
+        class="form-control"
+        type="text"
+        name="text"
+        [(ngModel)]="text"
+        id="text"
+        placeholder="Add grocery"
+        autofocus
+      />
+      <button type="submit" class="submit-button">
+        <fa-icon class="green-icon" [icon]="faCheck"></fa-icon>
+      </button>
+    </div>
+  </form>
+  <div (click)="closeAddItem()">
+    <fa-icon class="red-icon" [icon]="faTimes"></fa-icon>
   </div>
-</form>
+</div>

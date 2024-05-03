@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ItemComponent } from '../item/item.component';
@@ -14,11 +14,10 @@ import { UiService } from '../../services/ui.service';
   styleUrl: './items.component.css',
 })
 export class ItemsComponent implements OnInit {
+  private uiService = inject(UiService);
   showBoughtItems: boolean = true;
 
   groceryList: GroceryItem[] = groceryList;
-
-  constructor(private uiService: UiService) {}
 
   ngOnInit() {
     this.uiService.onToggle().subscribe((data) => {
