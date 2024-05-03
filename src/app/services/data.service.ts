@@ -5,7 +5,18 @@ import { GroceryItem } from '../data/grocery.types';
   providedIn: 'root',
 })
 export class DataService {
-  protected groceryList: GroceryItem[] = [
+  private localStorageKey = 'groceryList';
+
+  constructor() {
+    // Load data from local storage when the service is initialized
+    const savedData = window.localStorage.getItem(this.localStorageKey);
+    if (savedData) {
+      this.groceryList = JSON.parse(savedData);
+    }
+  }
+
+  private groceryList: GroceryItem[] = [
+    // Default data if local storage is empty or not available
     { name: 'Apples', isBought: false },
     {
       name: 'Bananas',
@@ -30,20 +41,27 @@ export class DataService {
     { name: 'Tomatoes', isBought: false },
   ];
 
-  constructor() {}
-
   getAllGroceryList(): GroceryItem[] {
     return this.groceryList;
   }
 
   addItem(item: GroceryItem): void {
     this.groceryList.unshift(item);
+    this.saveData();
   }
 
   removeItem(item: GroceryItem): void {
     const index = this.groceryList.indexOf(item);
     if (index !== -1) {
-      this.groceryList.splice(index, 1); // Remove the item from the array
+      this.groceryList.splice(index, 1);
+      this.saveData();
     }
+  }
+
+  private saveData(): void {
+    window.localStorage.setItem(
+      this.localStorageKey,
+      JSON.stringify(this.groceryList)
+    );
   }
 }
