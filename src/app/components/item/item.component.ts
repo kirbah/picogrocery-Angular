@@ -1,9 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
+import { DataService } from '../../services/data.service';
 import { GroceryItem } from '../../data/grocery.types';
 
 @Component({
@@ -15,20 +16,16 @@ import { GroceryItem } from '../../data/grocery.types';
 })
 export class ItemComponent {
   @Input() item!: GroceryItem;
-  @Output() remove: EventEmitter<GroceryItem> = new EventEmitter<GroceryItem>();
+
+  private dataService = inject(DataService);
 
   faTimes = faTimes;
 
   toggleBought(item: GroceryItem) {
-    item.isBought = !item.isBought;
-    if (item.isBought) {
-      item.boughtTime = new Date();
-    } else {
-      item.boughtTime = null;
-    }
+    this.dataService.toggleBought(item);
   }
 
   removeItem(item: GroceryItem): void {
-    this.remove.emit(item);
+    this.dataService.removeItem(item);
   }
 }

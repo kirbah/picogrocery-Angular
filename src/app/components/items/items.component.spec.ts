@@ -57,10 +57,4 @@ describe('ItemsComponent', () => {
       { name: 'Bananas', isBought: true },
     ] as GroceryItem[]);
   });
-
-  it('should call dataService removeItem() when removeItem() is called', () => {
-    const mockItem: GroceryItem = { name: 'Apples', isBought: false };
-    component.removeItem(mockItem);
-    expect(dataServiceSpy.removeItem).toHaveBeenCalledWith(mockItem);
-  });
 });

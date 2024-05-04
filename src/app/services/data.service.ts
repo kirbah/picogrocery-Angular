@@ -58,6 +58,16 @@ export class DataService {
     }
   }
 
+  toggleBought(item: GroceryItem) {
+    item.isBought = !item.isBought;
+    if (item.isBought) {
+      item.boughtTime = new Date();
+    } else {
+      item.boughtTime = null;
+    }
+    this.saveData();
+  }
+
   private saveData(): void {
     window.localStorage.setItem(
       this.localStorageKey,

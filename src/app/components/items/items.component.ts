@@ -28,8 +28,4 @@ export class ItemsComponent implements OnInit {
       }
     });
   }
-
-  removeItem(item: GroceryItem): void {
-    this.dataService.removeItem(item);
-  }
 }
