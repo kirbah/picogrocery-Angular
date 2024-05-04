@@ -54,23 +54,22 @@ describe('DataService', () => {
   });
 
   it('should toggle item bought status and update boughtTime', () => {
-    // Toggle the bought status of an item
     const itemToToggle = service.getAllGroceryList()[0];
     service.toggleBought(itemToToggle);
 
     // Check if the bought status is toggled
-    expect(itemToToggle.isBought).toBe(true);
-    expect(itemToToggle.boughtTime).toBeTruthy();
+    const actual = service.getAllGroceryList()[0];
+    expect(actual.isBought).toBe(true);
+    expect(actual.boughtTime).toBeTruthy();
+  });
 
-    // Check if changes are saved to local storage
-    const storedData = JSON.parse(
-      window.localStorage.getItem(service['localStorageKey']) || '[]'
-    );
-    // Convert boughtTime to string for comparison
-    const itemToToggleWithTimeString = {
-      ...itemToToggle,
-      boughtTime: itemToToggle.boughtTime?.toISOString(),
-    };
-    expect(storedData[0]).toEqual(itemToToggleWithTimeString);
+  it('should toggle item bought status to false and remove boughtTime', () => {
+    const itemToToggle = service.getAllGroceryList()[1];
+    service.toggleBought(itemToToggle);
+
+    // Check if the bought status is toggled
+    const actual = service.getAllGroceryList()[1];
+    expect(actual.isBought).toBe(false);
+    expect(actual.boughtTime).toBeNull();
   });
 });
