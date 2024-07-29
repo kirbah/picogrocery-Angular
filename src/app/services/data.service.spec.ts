@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { DataService } from './data.service';
 import { GroceryItem } from '../data/grocery.types';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('DataService', () => {
   let service: DataService;
@@ -53,23 +54,25 @@ describe('DataService', () => {
     expect(storedData).not.toContain(itemToRemove);
   });
 
-  it('should toggle item bought status and update boughtTime', () => {
+  it('should toggle item bought status and update boughtTime', fakeAsync(() => {
     const itemToToggle = service.getAllGroceryList()[0];
     service.toggleBought(itemToToggle);
+    tick(); // simulate the passage of time
 
     // Check if the bought status is toggled
     const actual = service.getAllGroceryList()[0];
     expect(actual.isBought).toBe(true);
     expect(actual.boughtTime).toBeTruthy();
-  });
+  }));
 
-  it('should toggle item bought status to false and remove boughtTime', () => {
+  it('should toggle item bought status to false and remove boughtTime', fakeAsync(() => {
     const itemToToggle = service.getAllGroceryList()[1];
     service.toggleBought(itemToToggle);
+    tick(); // simulate the passage of time
 
     // Check if the bought status is toggled
     const actual = service.getAllGroceryList()[1];
     expect(actual.isBought).toBe(false);
     expect(actual.boughtTime).toBeNull();
-  });
+  }));
 });
