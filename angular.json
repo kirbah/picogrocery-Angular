@@ -75,7 +75,13 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "repo": "https://github.com/kirbah/picogrocery-Angular.git",
+            "baseHref": "https://kirbah.github.io/picogrocery-Angular/",
+            "name": "picogrocery",
+            "email": "kirbah@gmail.com"
+          }
         }
       }
     }

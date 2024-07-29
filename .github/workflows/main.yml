@@ -29,4 +29,4 @@ jobs:
       - name: Prepare and deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run ng -- deploy --base-href=https://kirbah.github.io/picogrocery-Angular/ --name="picogrocery" --email="kirbah@gmail.com"
+        run: npm run ng -- deploy
