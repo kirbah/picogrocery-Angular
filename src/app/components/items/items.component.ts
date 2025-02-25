@@ -7,11 +7,10 @@ import { UiService } from '../../services/ui.service';
 import { DataService } from '../../services/data.service';
 
 @Component({
-  selector: 'app-items',
-  standalone: true,
-  imports: [CommonModule, ItemComponent],
-  templateUrl: './items.component.html',
-  styleUrl: './items.component.css',
+    selector: 'app-items',
+    imports: [CommonModule, ItemComponent],
+    templateUrl: './items.component.html',
+    styleUrl: './items.component.css'
 })
 export class ItemsComponent implements OnInit {
   private uiService = inject(UiService);

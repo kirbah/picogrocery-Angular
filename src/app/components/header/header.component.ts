@@ -8,11 +8,10 @@ import {
 import { UiService } from '../../services/ui.service';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [FontAwesomeModule],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css',
+    selector: 'app-header',
+    imports: [FontAwesomeModule],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.css'
 })
 export class HeaderComponent {
   private uiService = inject(UiService);

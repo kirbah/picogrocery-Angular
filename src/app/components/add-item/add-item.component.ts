@@ -10,11 +10,10 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-add-item',
-  standalone: true,
-  imports: [FormsModule, CommonModule, FontAwesomeModule],
-  templateUrl: './add-item.component.html',
-  styleUrl: './add-item.component.css',
+    selector: 'app-add-item',
+    imports: [FormsModule, CommonModule, FontAwesomeModule],
+    templateUrl: './add-item.component.html',
+    styleUrl: './add-item.component.css'
 })
 export class AddItemComponent implements OnInit {
   private uiService = inject(UiService);

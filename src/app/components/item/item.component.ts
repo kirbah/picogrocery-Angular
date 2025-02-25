@@ -8,11 +8,10 @@ import { DataService } from '../../services/data.service';
 import { GroceryItem } from '../../data/grocery.types';
 
 @Component({
-  selector: 'app-item',
-  standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
-  templateUrl: './item.component.html',
-  styleUrl: './item.component.css',
+    selector: 'app-item',
+    imports: [CommonModule, FontAwesomeModule],
+    templateUrl: './item.component.html',
+    styleUrl: './item.component.css'
 })
 export class ItemComponent {
   @Input() item!: GroceryItem;
